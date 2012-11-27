@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13098901415930" configfile="/mause/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login" id="pf1314088565054328" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf1314088565054329 pf1314088565054330 pf1314088565054331 pf1314088565054332 pf1314088565054333" inlinks="pf1314088565054333 pf1314088565054334" path="/login.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="adminFrame" id="pf1314088565054335" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf1314088565054329" path="/adminFrame.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="especFrame" id="pf1314088565054336" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf1314088565054330" path="/especFrame.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="medFrame" id="pf1314088565054337" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf1314088565054331" path="/medFrame.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="recepFrame" id="pf1314088565054338" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf1314088565054332" path="/recepFrame.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf1314088565054339" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf1314088565054340 pf1314088565054334" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="logout" id="pf1314088565054341" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf1314088565054340" path="/logout.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="medInicial" id="pf1314088565054342" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf1314088565054343" inlinks="pf1314088565054344 pf1314088565054345" path="/medInicial.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="medConsulta" id="pf1314088565054346" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf1314088565054347 pf1314088565054344" inlinks="pf1314088565054343" path="/medConsulta.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="medConfirmacao" id="pf1314088565054348" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf1314088565054345" inlinks="pf1314088565054347" path="/medConfirmacao.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="medDoenca" id="pf1314088565054349" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf1314088565054350" inlinks="pf1314089242659395" path="/medDoenca.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="medDetalheDoenca" id="pf1314088565054351" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf1314089242659395" inlinks="pf1314088565054350" path="/medDetalheDoenca.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="adminInicial" id="pf1314088565054352" referenceLink="//@navigationRule.9/@navigationCase.1/@toViewId|" outlinks="pf1314088565054353 pf1314088565054354 pf1314088565054355" inlinks="pf1314088565054354 pf1314088565054356 pf1314088565054357 pf1314088565054358 pf1314088565054359" path="/adminInicial.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="adminEditar" id="pf1314088565054360" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf1314088565054356 pf1314088565054357" inlinks="pf1314088565054353" path="/adminEditar.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="adminAdicionar" id="pf1314088565054361" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf1314088565054358 pf1314088565054359" inlinks="pf1314088565054355" path="/adminAdicionar.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="recepInicial" id="pf1314088565055362" referenceLink="//@navigationRule.10/@navigationCase.1/@toViewId|" outlinks="pf1314088565055363 pf1314088565055364" inlinks="pf1314088565055363 pf1314088565055364" path="/recepInicial.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="recepPaciente" id="pf1314088565055365" referenceLink="//@navigationRule.13/@navigationCase.1/@toViewId|" outlinks="pf1314088565055366 pf1314088565055367 pf1314088565055368" inlinks="pf1314088565055367 pf1314088565055369 pf1314088565055370 pf1314088565055371 pf1314088565055372" path="/recepPaciente.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="recepEditar" id="pf1314088565055373" referenceLink="//@navigationRule.12/@fromViewId|" outlinks="pf1314088565055369 pf1314088565055370" inlinks="pf1314088565055366" path="/recepEditar.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="recepAdicionar" id="pf1314088565055374" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf1314088565055371 pf1314088565055372" inlinks="pf1314088565055368" path="/recepAdicionar.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="doencaInicial" id="pf1314088565055375" referenceLink="//@navigationRule.16/@navigationCase.1/@toViewId|" outlinks="pf1314088565055376 pf1314088565055377 pf1314088565055378" inlinks="pf1314088565055377 pf1314088565055379 pf1314088565055380 pf1314088565055381 pf1314088565055382" path="/doencaInicial.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="doencaEditar" id="pf1314088565055383" referenceLink="//@navigationRule.16/@fromViewId|" outlinks="pf1314088565055381 pf1314088565055382" inlinks="pf1314088565055376" path="/doencaEditar.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="doencaAdicionar" id="pf1314088565055384" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf1314088565055379 pf1314088565055380" inlinks="pf1314088565055378" path="/doencaAdicionar.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="sintomaInicial" id="pf1314088565055385" referenceLink="//@navigationRule.19/@navigationCase.1/@toViewId|" outlinks="pf1314088565055386 pf1314088565055387 pf1314088565055388" inlinks="pf1314088565055387 pf1314088565055389 pf1314088565055390 pf1314088565055391 pf1314088565055392" path="/sintomaInicial.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="sintomaEditar" id="pf1314088565055393" referenceLink="//@navigationRule.19/@fromViewId|" outlinks="pf1314088565055391 pf1314088565055392" inlinks="pf1314088565055386" path="/sintomaEditar.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="sintomaAdicionar" id="pf1314088565055394" referenceLink="//@navigationRule.18/@fromViewId|" outlinks="pf1314088565055389 pf1314088565055390" inlinks="pf1314088565055388" path="/sintomaAdicionar.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="medSintoma" id="pf1314089274063399" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf1314089274063400" inlinks="pf1314089284662403" path="/medSintoma.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="medDetalheSintoma" id="pf1314089274063401" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf1314089284662403" inlinks="pf1314089274063400" path="/medDetalheSintoma.jsp"/>
+  <links id="pf1314088565054329" target="pf1314088565054335" source="pf1314088565054328" outcome="admin"/>
+  <links id="pf1314088565054330" target="pf1314088565054336" source="pf1314088565054328" outcome="espec"/>
+  <links id="pf1314088565054331" target="pf1314088565054337" source="pf1314088565054328" outcome="medico"/>
+  <links id="pf1314088565054332" target="pf1314088565054338" source="pf1314088565054328" outcome="recep"/>
+  <links id="pf1314088565054333" target="pf1314088565054328" source="pf1314088565054328" outcome="fail"/>
+  <links id="pf1314088565054340" target="pf1314088565054341" source="pf1314088565054339" outcome="logout"/>
+  <links id="pf1314088565054334" target="pf1314088565054328" source="pf1314088565054339" outcome="login"/>
+  <links id="pf1314088565054343" target="pf1314088565054346" source="pf1314088565054342" outcome="consulta"/>
+  <links id="pf1314088565054347" target="pf1314088565054348" source="pf1314088565054346" outcome="success"/>
+  <links id="pf1314088565054344" target="pf1314088565054342" source="pf1314088565054346" outcome="cancelar"/>
+  <links id="pf1314088565054345" target="pf1314088565054342" source="pf1314088565054348" outcome="concluir"/>
+  <links id="pf1314088565054350" target="pf1314088565054351" source="pf1314088565054349" outcome="visualizar"/>
+  <links id="pf1314088565054353" target="pf1314088565054360" source="pf1314088565054352" outcome="editar"/>
+  <links id="pf1314088565054354" target="pf1314088565054352" source="pf1314088565054352" outcome="excluir"/>
+  <links id="pf1314088565054355" target="pf1314088565054361" source="pf1314088565054352" outcome="adicionar"/>
+  <links id="pf1314088565054356" target="pf1314088565054352" source="pf1314088565054360" outcome="success"/>
+  <links id="pf1314088565054357" target="pf1314088565054352" source="pf1314088565054360" outcome="cancelada"/>
+  <links id="pf1314088565054358" target="pf1314088565054352" source="pf1314088565054361" outcome="success"/>
+  <links id="pf1314088565054359" target="pf1314088565054352" source="pf1314088565054361" outcome="cancelada"/>
+  <links id="pf1314088565055363" target="pf1314088565055362" source="pf1314088565055362" outcome="excluir"/>
+  <links id="pf1314088565055364" target="pf1314088565055362" source="pf1314088565055362" outcome="atualizar"/>
+  <links id="pf1314088565055366" target="pf1314088565055373" source="pf1314088565055365" outcome="editar"/>
+  <links id="pf1314088565055367" target="pf1314088565055365" source="pf1314088565055365" outcome="excluir"/>
+  <links id="pf1314088565055368" target="pf1314088565055374" source="pf1314088565055365" outcome="adicionar"/>
+  <links id="pf1314088565055369" target="pf1314088565055365" source="pf1314088565055373" outcome="success"/>
+  <links id="pf1314088565055370" target="pf1314088565055365" source="pf1314088565055373" outcome="cancelada"/>
+  <links id="pf1314088565055371" target="pf1314088565055365" source="pf1314088565055374" outcome="success"/>
+  <links id="pf1314088565055372" target="pf1314088565055365" source="pf1314088565055374" outcome="cancelada"/>
+  <links id="pf1314088565055376" target="pf1314088565055383" source="pf1314088565055375" outcome="editar"/>
+  <links id="pf1314088565055377" target="pf1314088565055375" source="pf1314088565055375" outcome="excluir"/>
+  <links id="pf1314088565055378" target="pf1314088565055384" source="pf1314088565055375" outcome="adicionar"/>
+  <links id="pf1314088565055379" target="pf1314088565055375" source="pf1314088565055384" outcome="success"/>
+  <links id="pf1314088565055380" target="pf1314088565055375" source="pf1314088565055384" outcome="cancelada"/>
+  <links id="pf1314088565055381" target="pf1314088565055375" source="pf1314088565055383" outcome="success"/>
+  <links id="pf1314088565055382" target="pf1314088565055375" source="pf1314088565055383" outcome="cancelada"/>
+  <links id="pf1314088565055386" target="pf1314088565055393" source="pf1314088565055385" outcome="editar"/>
+  <links id="pf1314088565055387" target="pf1314088565055385" source="pf1314088565055385" outcome="excluir"/>
+  <links id="pf1314088565055388" target="pf1314088565055394" source="pf1314088565055385" outcome="adicionar"/>
+  <links id="pf1314088565055389" target="pf1314088565055385" source="pf1314088565055394" outcome="success"/>
+  <links id="pf1314088565055390" target="pf1314088565055385" source="pf1314088565055394" outcome="cancelada"/>
+  <links id="pf1314088565055391" target="pf1314088565055385" source="pf1314088565055393" outcome="success"/>
+  <links id="pf1314088565055392" target="pf1314088565055385" source="pf1314088565055393" outcome="cancelada"/>
+  <links id="pf1314089242659395" target="pf1314088565054349" source="pf1314088565054351" outcome="retornar"/>
+  <links id="pf1314089274063400" target="pf1314089274063401" source="pf1314089274063399" outcome="visualizar"/>
+  <links id="pf1314089284662403" target="pf1314089274063399" source="pf1314089274063401" outcome="retornar"/>
+</pageflow:Pageflow>

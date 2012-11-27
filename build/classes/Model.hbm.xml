@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+	<!-- AGENDA -->
+	<class name="com.mause.model.Agenda" table="Agenda">
+		<composite-id>
+			<key-many-to-one name="medico" column="Medico"
+				class="com.mause.model.Usuario">
+			</key-many-to-one>
+			<key-property name="dataHora" column="DataHorario" />
+		</composite-id>
+		<many-to-one name="paciente" column="Paciente"
+			class="com.mause.model.Paciente">
+		</many-to-one>
+		<property name="presente">
+			<column name="Presente" />
+		</property>
+	</class>
+
+	<!-- USUARIO -->
+	<class name="com.mause.model.Usuario" table="Usuario">
+		<id name="login" column="Login" />
+		<property name="senha">
+			<column name="Senha" />
+		</property>
+		<property name="nome">
+			<column name="Nome" />
+		</property>
+		<property name="endereco">
+			<column name="Endereco" />
+		</property>
+		<property name="telefone">
+			<column name="Telefone" />
+		</property>
+		<many-to-one name="cargo" column="Cargo"
+			class="com.mause.model.Cargo" not-null="true">
+		</many-to-one>
+		<property name="cpf">
+			<column name="CPF" />
+		</property>
+		<property name="dataNascimento">
+			<column name="DataNascimento" />
+		</property>
+		<property name="crm">
+			<column name="CRM" />
+		</property>
+	</class>
+	
+	<!-- PACIENTE -->
+	<class name="com.mause.model.Paciente" table="Paciente">
+		<id name="cpf" column="CPF" />
+		<property name="nome">
+			<column name="Nome" />
+		</property>
+		<property name="endereco">
+			<column name="Endereco" />
+		</property>
+		<property name="telefone">
+			<column name="Telefone"></column>
+		</property>
+		<property name="dataNascimento">
+			<column name="DataNascimento" />
+		</property>
+	</class>
+	
+	<!-- CARGO -->
+	<class name="com.mause.model.Cargo" table="Cargo">
+		<id name="id" column="idCargo" />
+		<property name="nome">
+			<column name="Nome" />
+		</property>
+		<property name="desc">
+			<column name="Descicao" />
+		</property>
+	</class>
+	
+	<!-- CONSULTA -->
+	<class name="com.mause.model.Consulta" table="Consulta">
+		<id name="id" column="idConsulta">
+			<generator class="increment" />
+		</id>
+		<many-to-one name="medico" column="Medico"
+			class="com.mause.model.Usuario" not-null="true">
+		</many-to-one>
+		<many-to-one name="paciente" column="Paciente"
+			class="com.mause.model.Paciente" not-null="true">
+		</many-to-one>
+		<property name="dataHorario">
+			<column name="DataHorario" />
+		</property>
+		<property name="finalizada">
+			<column name="Finalizada" />
+		</property>
+		<property name="obs">
+			<column name="Observacoes" />
+		</property>
+		<set name="sintomas" table="Consulta_has_Sintoma">
+			<key column="Consulta_idConsulta" />
+			<many-to-many column="Sintoma_CID_Sintoma"
+				class="com.mause.model.Sintoma" />
+		</set>
+		<set name="diagnostico" table="Diagnostico">
+			<key column="Consulta_idConsulta" />
+			<many-to-many column="Doenca_CID_Doenca"
+				class="com.mause.model.Doenca" />
+		</set>
+		<set name="receitas" table="Consulta_has_Receituario" cascade="all">
+			<key column="Consulta_idConsulta" />
+			<many-to-many column="Receituario_idReceituario"
+				unique="true"
+				class="com.mause.model.Receituario" />
+		</set>
+	</class>
+	
+	<!-- DOENCA -->
+	<class name="com.mause.model.Doenca" table="Doenca">
+		<id name="cid" column="CID_Doenca" />
+		<property name="nome">
+			<column name="Nome" />
+		</property>
+		<property name="nomeCientifico">
+			<column name="NomeCientifico" />
+		</property>
+		<property name="tratamento">
+			<column name="Tratamento" />
+		</property>
+		<property name="ref">
+			<column name="Referencias" />
+		</property>
+		<property name="desc">
+			<column name="Descricao" />
+		</property>
+		<set name="sintomas" table="Doenca_has_Sintoma">
+			<key column="Doenca_CID_Doenca" />
+			<many-to-many column="Sintoma_CID_Sintoma"
+				class="com.mause.model.Sintoma" />
+		</set>
+	</class>
+	
+	<!-- RECEITUARIO -->
+	<class name="com.mause.model.Receituario" table="Receituario">
+		<id name="id" column="idReceituario">
+			<generator class="increment" />
+		</id>
+		<property name="exames">
+			<column name="Exames" />
+		</property>
+		<property name="medicamentos">
+			<column name="Medicamentos" />
+		</property>
+		<property name="obs">
+			<column name="Observacoes" />
+		</property>
+	</class>
+	
+	<!-- RELATORIO -->
+	<class name="com.mause.model.Relatorio" table="Relatorio">
+		<id name="data" column="Data" />
+		<property name="qtdeConsultas">
+			<column name="QtdeConsultas" />
+		</property>
+		<property name="doenca1">
+			<column name="Doenca1"></column>
+		</property>
+		<property name="doenca2">
+			<column name="Doenca2"></column>
+		</property>
+		<property name="doenca3">
+			<column name="Doenca3"></column>
+		</property>
+		<property name="medico1">
+			<column name="Medico1" />
+		</property>
+		<property name="medico2">
+			<column name="Medico2" />
+		</property>
+		<property name="medico3">
+			<column name="Medico3" />
+		</property>
+		<property name="aceitacaoDiag">
+			<column name="AceitacaoDiag" />
+		</property>
+	</class>
+	
+	<!-- SINTOMA -->
+	<class name="com.mause.model.Sintoma" table="Sintoma">
+		<id name="sintomaCID" column="CID_Sintoma" />
+		<property name="nome">
+			<column name="Nome" />
+		</property>
+		<property name="desc">
+			<column name="Descricao" />
+		</property>
+	</class>
+</hibernate-mapping>

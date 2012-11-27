@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+    
+    <application>
+
+		<view-handler>org.ajax4jsf.application.AjaxViewHandler</view-handler>
+
+     	<resource-bundle>
+    		<base-name>com.mause.bundle.Application</base-name>
+    		<var>AppMsg</var>
+    	</resource-bundle>
+
+    	<resource-bundle>
+    		<base-name>com.mause.bundle.Error</base-name>
+    		<var>ErrorMsg</var>
+    	</resource-bundle>
+    </application>
+    
+     <lifecycle>
+    	<phase-listener id="nocache">com.mause.util.NoCacheListener</phase-listener>
+    </lifecycle>
+
+    <lifecycle>
+    	<phase-listener id="sessionControl">com.mause.util.SessionListener</phase-listener>
+    </lifecycle>
+    
+    <managed-bean>
+    	<managed-bean-name>loginBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.LoginBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>logoutBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.LogoutBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <!-- MEDICO BEANS -->
+    <managed-bean>
+    	<managed-bean-name>medFrameBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.medico.MedFrameBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>medicoBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.medico.MedicoBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>nomeMedico</property-name>
+    		<value>#{loginBean.login}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>agenda</property-name>
+    		<value>#{loginBean.agenda}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>medConsultaBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.medico.MedConsultaBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>consulta</property-name>
+    		<value>#{medicoBean.consulta}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>sintomas</property-name>
+    		<value>#{medicoBean.sintomas}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>doencas</property-name>
+    		<value>#{medicoBean.doencas}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>agenda</property-name>
+    		<value>#{medicoBean.agenda}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>agendamento</property-name>
+    		<value>#{medicoBean.agendamento}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>medConfirmacaoBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.medico.MedConfirmacaoBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>consulta</property-name>
+    		<value>#{medConsultaBean.consulta}</value>
+    	</managed-property>
+    </managed-bean>
+
+    <managed-bean>
+    	<managed-bean-name>medDoencaBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.medico.MedDoencaBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>listaDoencas</property-name>
+    		<value>#{loginBean.doencas}</value>
+    	</managed-property>
+    </managed-bean>    
+    
+    <managed-bean>
+    	<managed-bean-name>medDetalheDoencaBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.medico.MedDetalheDoencaBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>doenca</property-name>
+    		<value>#{medDoencaBean.doenca}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>doencaSintomas</property-name>
+    		<value>#{medDoencaBean.doencaSintomas}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>medSintomaBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.medico.MedSintomaBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>listaSintomas</property-name>
+    		<value>#{loginBean.sintomas}</value>
+    	</managed-property>
+    </managed-bean>    
+    
+    <managed-bean>
+    	<managed-bean-name>medDetalheSintomaBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.medico.MedDetalheSintomaBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>sintoma</property-name>
+    		<value>#{medSintomaBean.sintoma}</value>
+    	</managed-property>
+    </managed-bean>
+
+    <!-- ADMINISTRADOR BEANS -->
+    <managed-bean>
+    	<managed-bean-name>adminFrameBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.admin.AdminFrameBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>adminBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.admin.AdminBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>usuarios</property-name>
+    		<value>#{loginBean.usuarios}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>adminEditarBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.admin.AdminEditarBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>usuario</property-name>
+    		<value>#{adminBean.usr}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaUsuarios</property-name>
+    		<value>#{adminBean.usuarios}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaCargos</property-name>
+    		<value>#{adminBean.cargos}</value>
+    	</managed-property>
+    </managed-bean>
+
+    <managed-bean>
+    	<managed-bean-name>adminAdicionarBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.admin.AdminAdicionarBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>usuario</property-name>
+    		<value>#{adminBean.usr}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaUsuarios</property-name>
+    		<value>#{adminBean.usuarios}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaCargos</property-name>
+    		<value>#{adminBean.cargos}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <!-- RECEPCIONISTA BEANS -->
+    <managed-bean>
+    	<managed-bean-name>recepFrameBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.recep.RecepFrameBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>recepBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.recep.RecepBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>agenda</property-name>
+    		<value>#{loginBean.agenda}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>recepPacBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.recep.RecepPacBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>pacientes</property-name>
+    		<value>#{loginBean.pacientes}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>recepEditarBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.recep.RecepEditarBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>paciente</property-name>
+    		<value>#{recepPacBean.pac}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaPacientes</property-name>
+    		<value>#{recepPacBean.pacientes}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>recepAdicionarBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.recep.RecepAdicionarBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>paciente</property-name>
+    		<value>#{recepPacBean.pac}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaPacientes</property-name>
+    		<value>#{recepPacBean.pacientes}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <!-- ESPECIALISTA BEANS -->
+    <managed-bean>
+    	<managed-bean-name>especFrameBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.espec.EspecFrameBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>doencaBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.espec.DoencaBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>listaDoencas</property-name>
+    		<value>#{loginBean.doencas}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>doencaAdicionarBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.espec.DoencaAdicionarBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>doenca</property-name>
+    		<value>#{doencaBean.doenca}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>doencaSintomas</property-name>
+    		<value>#{doencaBean.doencaSintomas}</value>
+    	</managed-property>
+    	
+    	<managed-property>
+    		<property-name>listaDoencas</property-name>
+    		<value>#{doencaBean.listaDoencas}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaSintomas</property-name>
+    		<value>#{doencaBean.sintomas}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>doencaEditarBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.espec.DoencaEditarBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>doenca</property-name>
+    		<value>#{doencaBean.doenca}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>doencaSintomas</property-name>
+    		<value>#{doencaBean.doencaSintomas}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaDoencas</property-name>
+    		<value>#{doencaBean.listaDoencas}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaSintomas</property-name>
+    		<value>#{doencaBean.sintomas}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>sintomaBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.espec.SintomaBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>listaSintomas</property-name>
+    		<value>#{loginBean.sintomas}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>sintomaAdicionarBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.espec.SintomaAdicionarBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>sintoma</property-name>
+    		<value>#{sintomaBean.sintoma}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaSintomas</property-name>
+    		<value>#{sintomaBean.listaSintomas}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>sintomaEditarBean</managed-bean-name>
+    	<managed-bean-class>com.mause.bean.espec.SintomaEditarBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-property>
+    		<property-name>sintoma</property-name>
+    		<value>#{sintomaBean.sintoma}</value>
+    	</managed-property>
+    	<managed-property>
+    		<property-name>listaSintomas</property-name>
+    		<value>#{sintomaBean.listaSintomas}</value>
+    	</managed-property>
+    </managed-bean>
+    
+    <!-- VALIDATORS -->
+    <validator>
+    	<validator-id>loginValidator</validator-id>
+    	<validator-class>com.mause.bean.LoginValidator</validator-class>
+    </validator>
+    
+    <validator>
+    	<validator-id>cpfValidator</validator-id>
+    	<validator-class>com.mause.bean.admin.CpfValidator</validator-class>
+    </validator>
+    
+    <validator>
+    	<validator-id>usernameValidator</validator-id>
+    	<validator-class>com.mause.bean.admin.UsernameValidator</validator-class>
+    </validator>
+    
+    <validator>
+    	<validator-id>cpfRecepValidator</validator-id>
+    	<validator-class>com.mause.bean.recep.CpfValidator</validator-class>
+    </validator>
+
+    <!-- CONVERTERS -->
+    <converter>
+    	<converter-id>SintomaConverter</converter-id>
+    	<converter-class>com.mause.util.SintomaConverter</converter-class>
+    </converter>
+
+    <converter>
+    	<converter-id>DoencaConverter</converter-id>
+    	<converter-class>com.mause.util.DoencaConverter</converter-class>
+    </converter>
+    
+    <converter>
+    	<converter-id>CargoConverter</converter-id>
+    	<converter-class>com.mause.util.CargoConverter</converter-class>
+    </converter>
+    
+    <!-- NAVIGATION RULES LOGIN -->
+    <navigation-rule>
+    	<from-view-id>/login.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>admin</from-outcome>
+    		<to-view-id>/adminFrame.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>espec</from-outcome>
+    		<to-view-id>/especFrame.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>medico</from-outcome>
+    		<to-view-id>/medFrame.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>recep</from-outcome>
+    		<to-view-id>/recepFrame.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>fail</from-outcome>
+    		<to-view-id>/login.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+    <!-- NAVIGATION RULES LOGOUT -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/logout.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+    <!-- NAVIGATION RULES MEDICO -->
+    <navigation-rule>
+    	<from-view-id>/medInicial.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>consulta</from-outcome>
+    		<to-view-id>/medConsulta.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/medConsulta.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/medConfirmacao.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cancelar</from-outcome>
+			<to-view-id>/medInicial.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/medConfirmacao.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>concluir</from-outcome>
+			<to-view-id>/medInicial.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/medDoenca.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizar</from-outcome>
+			<to-view-id>/medDetalheDoenca.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/medDetalheDoenca.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>retornar</from-outcome>
+			<to-view-id>/medDoenca.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/medSintoma.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizar</from-outcome>
+			<to-view-id>/medDetalheSintoma.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/medDetalheSintoma.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>retornar</from-outcome>
+			<to-view-id>/medSintoma.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+    <!-- NAVIGATION RULES ADMINISTRADOR -->
+    <navigation-rule>
+    	<from-view-id>/adminInicial.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>editar</from-outcome>
+    		<to-view-id>/adminEditar.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>excluir</from-outcome>
+    		<to-view-id>/adminInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>adicionar</from-outcome>
+    		<to-view-id>/adminAdicionar.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+    	<from-view-id>/adminEditar.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/adminInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>cancelada</from-outcome>
+    		<to-view-id>/adminInicial.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+    	<from-view-id>/adminAdicionar.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/adminInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>cancelada</from-outcome>
+    		<to-view-id>/adminInicial.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+
+	<!-- NAVIGATION RULES RECEPCIONISTA -->
+	<navigation-rule>
+		<from-view-id>/recepInicial.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>excluir</from-outcome>
+			<to-view-id>/recepInicial.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>atualizar</from-outcome>
+			<to-view-id>/recepInicial.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+    <navigation-rule>
+    	<from-view-id>/recepPaciente.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>editar</from-outcome>
+    		<to-view-id>/recepEditar.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>excluir</from-outcome>
+    		<to-view-id>/recepPaciente.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>adicionar</from-outcome>
+    		<to-view-id>/recepAdicionar.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+    	<from-view-id>/recepEditar.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/recepPaciente.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>cancelada</from-outcome>
+    		<to-view-id>/recepPaciente.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+    	<from-view-id>/recepAdicionar.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/recepPaciente.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>cancelada</from-outcome>
+    		<to-view-id>/recepPaciente.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+	<!-- NAVIGATION RULES ESPECIALISTA -->
+	<navigation-rule>
+    	<from-view-id>/doencaInicial.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>editar</from-outcome>
+    		<to-view-id>/doencaEditar.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>excluir</from-outcome>
+    		<to-view-id>/doencaInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>adicionar</from-outcome>
+    		<to-view-id>/doencaAdicionar.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+	
+    <navigation-rule>
+    	<from-view-id>/doencaAdicionar.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/doencaInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>cancelada</from-outcome>
+    		<to-view-id>/doencaInicial.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+	
+    <navigation-rule>
+    	<from-view-id>/doencaEditar.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/doencaInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>cancelada</from-outcome>
+    		<to-view-id>/doencaInicial.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+	
+	<navigation-rule>
+    	<from-view-id>/sintomaInicial.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>editar</from-outcome>
+    		<to-view-id>/sintomaEditar.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>excluir</from-outcome>
+    		<to-view-id>/sintomaInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>adicionar</from-outcome>
+    		<to-view-id>/sintomaAdicionar.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+	
+    <navigation-rule>
+    	<from-view-id>/sintomaAdicionar.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/sintomaInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>cancelada</from-outcome>
+    		<to-view-id>/sintomaInicial.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+	
+    <navigation-rule>
+    	<from-view-id>/sintomaEditar.jsp</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/sintomaInicial.jsp</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>cancelada</from-outcome>
+    		<to-view-id>/sintomaInicial.jsp</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+	
+</faces-config>

@@ -1,0 +1,57 @@
+<style type="text/css">
+*{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+body, html{
+
+    background:#e7e7e7;
+    text-align:center;
+    margin-bottom:10px;
+}
+/* ----- FORMS ----- */
+
+input{
+    background-color: #FFF;
+    color: #999999;
+    border: 1px solid #CCC;
+    font-size: 11px;
+    width:160px;              
+}
+button{
+    background-color:#9ad0f9;
+    line-height:11px;
+    color: #fff;
+    border: 1px solid #CCC;
+    font-size: 11px;
+    height:20px;
+    margin: 0;
+    padding: 0 5px;
+}
+
+.logoInicial {
+    padding-bottom: 1%;
+    padding-top: 10%;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-bottom-color: #003366;
+    border-bottom-width: 2px;
+    border-left-style: none;
+    border-bottom-style: solid;
+    border-right-style: none;
+    border-top-style: none;
+    width: 500px;
+}
+.loginForm {
+	bottom: auto;
+	text-align: center;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 30px;
+}
+defaultText {
+	bottom: auto;
+	text-align: right;
+}
